@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 if [[ "$REQUEST_METHOD" == "POST" ]]
 then
   :;
@@ -8,9 +10,10 @@ fi
 
 
 echo "Content-Type: text/html"
-
 echo
 echo "<html><body>"
+
+echo "<h1>From tests</h1>"
 
 echo "<form>
 <input type='hidden' name='key' value='val'></input>
@@ -26,9 +29,18 @@ Post Button Outside Form
 echo "<button method='get'>
 Get Button Outside Form
 </button>"
+
+echo "<h1>ENV</h1>"
 env | sort | while read line;
 do
   echo "<p>$line</p>"
 done
-echo "</body>"
-echo "</html>"
+
+echo "<h1>Parsing</h1>"
+for i in [ "$QUERY_STRING" ]
+do
+  echo "<p>THING=$i</p>"
+done
+
+
+echo "</body></html>"
