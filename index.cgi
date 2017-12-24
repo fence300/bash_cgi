@@ -12,7 +12,7 @@ echo
 echo "<html>"
 echo "<head>"
 echo "<title>Test Page</title>"
-echo "<link rel='stylesheet' href='style.css' />"
+echo "<link rel='stylesheet' href='http://git.lkreft.com/cgi-bin/style.css' />"
 echo "</head>"
 echo "<body>"
 echo "<div class='container'>"
