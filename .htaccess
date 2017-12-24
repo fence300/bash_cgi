@@ -3,7 +3,7 @@ AddType text/css .css
 
 # Prevent users from seeing any resource files that they shouldn't be seeing
 <Files ~ "\.sh">
-  order allow, deny
+  order allow,deny
   deny from all
 </Files>
 
