@@ -2,15 +2,13 @@
 AddType text/css .css
 
 
-# Prevent users from seeing any resource files that they shouldn't be seeing
-<Files ~ ".*\.(sh)$">
-Require all denied
-</Files>
+
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.cgi$ - [L]
+RewriteCond %{REQUEST_FILENAME} \.sh$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.cgi [L]
