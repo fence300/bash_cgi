@@ -37,7 +37,7 @@ do
 done
 
 echo "<h1>Parsing</h1>"
-for i in [ "$QUERY_STRING" ]
+for i in $QUERY_STRING
 do
   echo "<p>THING=$i</p>"
 done
