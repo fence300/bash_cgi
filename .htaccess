@@ -1,6 +1,9 @@
 # Prevent apache from trying to execute the files it should be serving as plain text
 AddType text/css .css
 
+<Files ~ ".*\.sh">
+  Require all deny
+</Files>
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -10,5 +13,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} .*\.sh$
 RewriteRule . /index.cgi [L]
-RewriteRule ".+(\.sh)" /index.cgi [L]
 </IfModule>
