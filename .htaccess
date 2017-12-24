@@ -2,12 +2,12 @@
 AddType text/css .css
 
 
-RedirectMatch "^.+(\.sh)" /index.cgi
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.cgi$ - [L]
+RewriteCond "^.+(\.sh)"
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} .*\.sh$
