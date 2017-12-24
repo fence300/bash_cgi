@@ -4,8 +4,7 @@ AddType text/css .css
 
 # Prevent users from seeing any resource files that they shouldn't be seeing
 <Files ~ ".*\.(sh)$">
-  order allow deny
-  deny from all
+Require all denied
 </Files>
 
 <IfModule mod_rewrite.c>
