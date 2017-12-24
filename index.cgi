@@ -7,6 +7,8 @@ then
   read POST_DATA
 fi
 
+
+
 echo "Content-Type: text/html"
 echo
 echo "<html>"
@@ -22,6 +24,7 @@ env | sort | while read line
 do
   echo "<p>$line</p>"
 done
+echo "<p>PWD: $(pwd)</p>"
 
 echo "</div>"
 echo "</body>"
