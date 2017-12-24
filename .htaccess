@@ -1,6 +1,4 @@
-<IfModule mod_mime>
-  AddType text/css .css
-</IfModule>
+AddType text/css .css
 
 <IfModule mod_rewrite.c>
 RewriteEngine On

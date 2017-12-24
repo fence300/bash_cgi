@@ -1,8 +1,3 @@
-#!/bin/bash
-# Apparently we have to wrap it in an executable script because EVERYTHING in cgi-bin gets executed
-echo "Content-type: text/css"
-echo
-cat << EOF
 
 p {
   border:0px;
@@ -19,7 +14,3 @@ p {
   margin-left: 10%;
   max-width: 90%;
 }
-
-
-
-EOF
