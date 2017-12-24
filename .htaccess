@@ -2,7 +2,7 @@
 AddType text/css .css
 
 <Files ~ "\.sh">
-  Require all deny
+  Require all denied
 </Files>
 
 <IfModule mod_rewrite.c>
