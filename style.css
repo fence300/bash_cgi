@@ -1,4 +1,6 @@
 #!/bin/bash
+# We have to wrap it in an executable script because EVERYTHING in cgi-bin gets executed
+
 echo "Content-type: text/css"
 echo
 cat << EOF
