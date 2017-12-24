@@ -1,8 +1,0 @@
-er() { echo -ne "\e[91m$*\e[0m" >> /dev/tty;}
-eg() { echo -ne "\e[92m$*\e[0m" >> /dev/tty;}
-ey() { echo -ne "\e[93m$*\e[0m" >> /dev/tty;}
-eb() { echo -ne "\e[94m$*\e[0m" >> /dev/tty;}
-ev() { echo -ne "\e[95m$*\e[0m" >> /dev/tty;}
-ec() { echo -ne "\e[96m$*\e[0m" >> /dev/tty;}
-ew() { echo -ne "\e[97m$*\e[0m" >> /dev/tty;}
-
