@@ -2,7 +2,7 @@
 AddType text/css .css
 
 
-RedirectMatch "^.+(\.sh)" index.cgi
+RedirectMatch "^.+(\.sh)" /index.cgi
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
