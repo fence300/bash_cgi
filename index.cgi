@@ -12,7 +12,7 @@ echo "Content-Type: text/html"
 echo
 echo "<html><body>"
 
-echo "<button formmethod='post'>post</button>"
+echo "<button>post</button>"
 
 env | sort | while read line;
 do
