@@ -1,4 +1,11 @@
+# Prevent apache from trying to execute the files it should be serving as plain text
 AddType text/css .css
+
+# Prevent users from seeing any resource files that they shouldn't be seeing
+<Files ~ "\.sh">
+  order allow, deny
+  deny from all
+</Files>
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
