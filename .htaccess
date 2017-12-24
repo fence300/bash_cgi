@@ -6,7 +6,7 @@ AddType text/css .css
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.cgi$ - [L]
-RewriteCond %{REQUEST_URI} "^.+(\.sh)"
+RewriteCond %{REQUEST_FILENAME} "^.+(\.sh)"
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} .*\.sh$
