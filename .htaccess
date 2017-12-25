@@ -1,4 +1,4 @@
-
+RemoveType .css
 AddType 'text/css; charset=UTF-8' .css
 
 <Files ~ ".*\.sh">
