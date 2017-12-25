@@ -1,0 +1,18 @@
+p {
+  margin: 0px;
+  border: 0px;
+}
+
+body {
+  font-family: serif;
+  font-weight: normal;
+}
+
+.container {
+  margin-left: 10%;
+}
+
+.title {
+  font-size: 35px;
+  text-align: center;
+}
