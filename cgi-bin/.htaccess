@@ -1,0 +1,15 @@
+AddType text/plain .css
+
+<Files ~ ".*\.sh">
+  Require all denied
+</Files>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.cgi$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} .*\.sh$
+RewriteRule . /index.cgi [L]
+</IfModule>
