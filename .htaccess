@@ -1,5 +1,5 @@
 RemoveType .css
-AddType 'text/css; charset=UTF-8' .css
+AddType text/css .css
 
 <Files ~ ".*\.sh">
   Require all denied
