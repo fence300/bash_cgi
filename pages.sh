@@ -5,7 +5,7 @@ function environment_page ()
   echo "<html>"
   echo "<head>"
   echo "<title>New Test Page</title>"
-  echo "<link rel='stylesheet' type='text/css' href='style.css' />"
+  echo "<link rel='stylesheet' type='text/css' href='style.css' >"
   echo "</head>"
   echo "<body>"
   echo "<div class='container'>"
