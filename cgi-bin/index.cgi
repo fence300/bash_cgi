@@ -9,6 +9,7 @@ page_headers() {
   [[ "$page_title" ]] || page_title="Test Page"
   echo "<head>"
   echo "<title>$page_title</title>"
+  echo "<link rel='stylesheet' type='text/css' href='/style.css' />"
   echo "</head>"
 
 }
