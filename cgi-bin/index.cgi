@@ -18,7 +18,10 @@ environment_page() {
   echo "<html>"
   page_headers --page-title="Environment"
   echo "<body>"
+  echo "<div class='container'>"
+  echo "<div class='title'>Environment Variables</div>"
   env | sort | while read line; do echo "<p>$line</p>"; done
+  echo "</div>"
   echo "</body>"
   echo "</html>"
 }
