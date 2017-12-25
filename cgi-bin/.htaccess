@@ -1,10 +1,7 @@
-# deny access to any bash resource files
-# only .cgi files are going to be executed
 <Files ~ ".*\.sh">
   Require all denied
 </Files>
 
-# send any miscelaneous requests back to index.cgi
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
