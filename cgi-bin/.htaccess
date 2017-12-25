@@ -7,7 +7,7 @@
 # send any miscelaneous requests back to index.cgi
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /cgi-bin/
+RewriteBase /
 RewriteRule ^index\.cgi$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
