@@ -1,4 +1,4 @@
-# Prevent apache from trying to execute the files it should be serving as plain text
+
 AddType text/css .css
 
 <Files ~ ".*\.sh">

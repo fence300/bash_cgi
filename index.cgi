@@ -1,6 +1,9 @@
 #!/bin/bash
 
-
+if [ -e pages.sh ]
+then
+  source pages.sh
+fi
 
 
 if [[ "$REQUEST_METHOD" == "POST" ]]
@@ -9,24 +12,4 @@ then
 fi
 
 
-
-echo "Content-Type: text/html"
-echo
-echo "<html>"
-echo "<head>"
-echo "<title>New Test Page</title>"
-echo "<link rel='stylesheet' type='text/css' href='style.css' />"
-echo "</head>"
-echo "<body>"
-echo "<div class='container'>"
-
-echo "<div class='title'>Environment</div>"
-env | sort | while read line
-do
-  echo "<p>$line</p>"
-done
-echo "<p>PWD: $(pwd)</p>"
-
-echo "</div>"
-echo "</body>"
-echo "</html>"
+environment_page
