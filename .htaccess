@@ -1,5 +1,5 @@
 
-AddType 'text/css' .css
+AddType text/css .css
 
 <Files ~ ".*\.sh">
   Require all denied
