@@ -23,7 +23,4 @@ environment_page() {
   echo "</html>"
 }
 
-echo "Content-Type: text/html"
-echo
-echo "hello world"
 environment_page
