@@ -60,7 +60,7 @@ then
           mysql_call "INSERT INTO users ( username, passhash, firstname ) VALUES ( '$user' , MD5('$pass'), '$name')"
           user_id=$(mysql_call "SELECT user_id FROM users WHERE username='$user' AND passhash=MD5('$pass')")
           sed -i 's|AUTHED=0|AUTHED=1|' "$ses_dir/$sess"
-          declare user name user_id >> "$ses_dir/$sess"
+          declare -p user name user_id >> "$ses_dir/$sess"
           [[ "$rdr" ]] || rdr=home
           echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
           exit
@@ -88,7 +88,7 @@ then
         then
           name=$(mysql_call "SELECT firstname FROM users WHERE username='$user' AND passhash=MD5('$pass')")
           sed -i 's|AUTHED=0|AUTHED=1|' "$ses_dir/$sess"
-          declare user name user_id >> "$ses_dir/$sess"
+          declare -p user name user_id >> "$ses_dir/$sess"
           [[ "$rdr" ]] || rdr=home
           echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
           exit
