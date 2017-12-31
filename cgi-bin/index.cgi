@@ -37,8 +37,8 @@ then
   <input type='hidden' name='key3' value='val3'/>
   <input type='submit' value='post' />
   </form>"
-  test -n "$POST_DATA" && body_content+="<h1>Post Data</h1><p>$POST_DATA</p>"
-  
+  test -n "$POST_DATA" && body_content+="<h1>Post Data</h1>$(for p in ${POST_DATA//&/ }; do echo "<p>$p</p>"; done)"
+
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
