@@ -39,7 +39,7 @@ then
   source "$ses_dir/$sess"
 
   case $REQUEST_URI in
-    ("") echo -e "Status: 301\nLocation: home\n\n"; exit ;;
+    (/) echo -e "Status: 301\nLocation: home\n\n"; exit ;;
     (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
     (/env)
     site_title+=" | Environment"
