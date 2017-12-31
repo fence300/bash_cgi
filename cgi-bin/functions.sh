@@ -6,18 +6,7 @@ mysql_call() { mysql $db_name -u "$db_user" -p"$db_pass" -h "$db_host" -sNe "$*"
 html_headers() {
   echo "<head>"
   echo "<title>$site_title</title>"
-  benign='
-  echo "<style>"
-  echo "p {margin:0px;border:0px;}"
-  echo "h1 { text-align:center;}"
-  echo "body { font-family:serif;}"
-  echo ".con { margin-left:20%;}"
-  echo ".nav { position:fixed; height:100%;top:0px;left:0px;width:20%;text-align:center;background-color:grey;}"
-  echo ".nav p {color:white;background-color:black;padding:5px;font-weight:bold;width=100%}"
-  echo ".nav p:hover { background-color:white; color:black}"
-  echo "</style>"
-  '
-  echo "<link rel='stylesheet' type='text/css' href='https://$SERVER_NAME/style.css' />"
+  echo "<link rel='stylesheet' type='text/css' href='/style.css' />"
   echo "</head>"
 }
 html_body() {
