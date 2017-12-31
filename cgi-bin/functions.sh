@@ -10,8 +10,11 @@ html_headers() {
   echo "</head>"
 }
 html_body() {
+  debug=1
   echo "<body>"
-  echo "<div class='con'>$body_content</div>"
+  echo "<div class='con'>$body_content"
+  (debug) && echo "<table>$(for i in ${!debug_msg[*]}; do echo "<tr><td>${debug_msg[$i]}</td></tr>"; done)</table>"
+  echo "</div>"
   echo "<div class='nav'>"
   if ((AUTHED))
   then
