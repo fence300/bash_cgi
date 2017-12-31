@@ -1,18 +1,7 @@
-p {
-  margin: 0px;
-  border: 0px;
-}
-
-body {
-  font-family: serif;
-  font-weight: normal;
-}
-
-.container {
-  margin-left: 10%;
-}
-
-.title {
-  font-size: 35px;
-  text-align: center;
-}
+p { margin: 0px; border: 0px;}
+h1 {  text-align: center;}
+body { font-family: serif; font-weight: normal;}
+.con { margin-left: 10%;}
+.nav { position: fixed; top:0px; left:0px;}
+.nav p { color: black; background-color: white; }
+.nav p:hover { color: white; background-color: black;}
