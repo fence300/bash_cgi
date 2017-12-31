@@ -137,8 +137,9 @@ then
   echo "</div><div class='nav'>"
   if ((AUTHED))
   then
-    echo "<p><a href='home'>Hello $user</a></p>"
+    echo "<p><a href='home'>Hello $name</a></p>"
     echo "<p><a href='logout'>Log out</a></p>"
+    echo "<p><a href='env'>Environment</a></p>"
   else
     echo "<p><a href='home'>Home</a></p>"
     echo "<p><a href='login'>Log In</a></p>"
