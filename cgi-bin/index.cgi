@@ -12,6 +12,7 @@ mysql_call "CREATE TABLE IF NOT EXISTS users (
   user_id INT(10) NOT NULL AUTO_INCREMENT,
   username VARCHAR(255) NOT NULL,
   passhash VARCHAR(255) NOT NULL,
+  firstname VARCHAR(255) NOT NULL,
   PRIMARY KEY(user_id)
 )"
 
