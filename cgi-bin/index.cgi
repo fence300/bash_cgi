@@ -111,6 +111,8 @@ then
 
     (/logout)
     sed -i 's|AUTHED=1|AUTHED=0|;s|^(declare)|#\1|' "$ses_dir/$sess"
+    echo -e "Location: home\n\n"
+    exit
     ;;
 
     (/env)
