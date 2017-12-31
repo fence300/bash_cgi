@@ -110,7 +110,7 @@ then
     ;;
 
     (/logout)
-    sed -i -r 's|AUTHED=1|AUTHED=0|;s|^(declare)|#\1|' "$ses_dir/$sess"
+    sed -i 's|AUTHED=1|AUTHED=0|;/^declare/d' "$ses_dir/$sess"
     echo -e "Location: env\n\n"
     exit
     ;;
