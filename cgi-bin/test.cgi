@@ -13,8 +13,13 @@ crit_err() { echo -e "Status: 500\nContent-type: text/html\n\n$*"; exit;}
 for i in dir ses_dir; do mkdir -p ${!i}; [ -d "${!i}" ] || crit_err "could not find dir: $i"; done
 for i in func page; do [ -e "$dir/$i.sh" ] && source "$dir/$i.sh" || crit_err "couldn not load: $i"; done
 
-echo "Content-Type: text/html"
-echo
-echo "<html><body><h1><center>Env</center></h1>"
-env | sort | while read line; do echo "<p>$line</p>"; done
-echo "</body></html>"
+if [[ "$HTTP_ACCEPT" =~ 'text/html' ]]
+then
+  echo "Content-Type: text/html"
+  echo
+  echo "<html><body><h1><center>Env</center></h1>"
+  env | sort | while read line; do echo "<p>$line</p>"; done
+  echo "</body></html>"
+else
+  crit_err "unknown accept type"
+fi
