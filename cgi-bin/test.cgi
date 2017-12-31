@@ -16,5 +16,5 @@ for i in func page; do [ -e "$dir/$i.sh" ] && source "$dir/$i.sh" || crit_err "c
 echo "Content-Type: text/html"
 echo
 echo "<html><body><h1><center>Env</center></h1>"
-env | sort | while read line; do echo "<p>$line</p>"
+env | sort | while read line; do echo "<p>$line</p>"; done
 echo "</body></html>"
