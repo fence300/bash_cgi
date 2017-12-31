@@ -26,7 +26,4 @@ create_account_form="<form method='post'><table>
 </table></form>"
 
 
-
-</table></form>"
-
 upload_form="<h1>Upload Test</h1><p>placeholder</p>"
