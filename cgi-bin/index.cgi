@@ -2,4 +2,4 @@
 
 echo "Content-Type: text/html"
 echo
-echo "hello world"
+env | sort
