@@ -31,13 +31,15 @@ html_body()
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
+  body_content="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
+
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
   html_headers
-  echo "<body>"
-  echo "<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
-  echo "<body>"
+  html_body
+  
+
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
   echo "Content-Type: application/json"
