@@ -38,16 +38,24 @@ then
   echo "Set-Cookie: sess=$sess; expires=$expire_soon";
   source "$ses_dir/$sess"
 
+  case $REQUEST_URI in
+    (/) echo -e "Status: 301\nLocation: home\n\n"; exit ;;
+    (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
+    (/env)
+    site_title+=" | Environment"
+    body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
+    body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
+    body_content+="<h1>Dummy Form</h1>
+    <form method='post'>
+    <input type='hidden' name='key1' value='val1'/>
+    <input type='hidden' name='key2' value='val2'/>
+    <input type='hidden' name='key3' value='val3'/>
+    <input type='submit' value='post' />
+    </form>"
+    ;;
 
-  body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
-  body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
-  body_content+="<h1>Dummy Form</h1>
-  <form method='post'>
-  <input type='hidden' name='key1' value='val1'/>
-  <input type='hidden' name='key2' value='val2'/>
-  <input type='hidden' name='key3' value='val3'/>
-  <input type='submit' value='post' />
-  </form>"
+  esac
+
   test -n "$POST_DATA" && body_content+="<h1>Post Data</h1>$(for p in ${POST_DATA//&/ }; do echo "<p>$p</p>"; done)"
 
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
