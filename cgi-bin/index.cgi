@@ -8,6 +8,12 @@ for i in dir ses_dir; do [ -d "${!i}" ] || mkdir -p ${!i}; [ -d "${!i}" ] || cri
 [ -e "$dir"/functions.sh ] && source "$dir"/functions.sh || crit_err "could not load functions file"
 [ -e "$dir/pages.sh" ] && source "$dir/pages.sh" || crit_err "could not load pages file"
 
+mysql_call "CREATE TABLE IF NOT EXISTS users (
+  user_id INT(10) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  passhash VARCHAR(255) NOT NULL,
+  PRIMARY KEY(user_id)
+)"
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
