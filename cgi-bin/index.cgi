@@ -41,8 +41,8 @@ html_body()
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
-  body_content="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
-
+  body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
+  body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
