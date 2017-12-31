@@ -20,29 +20,55 @@ then
   echo "Set-Cookie: sess=$sess; expires=$expire_soon";
   source "$ses_dir/$sess"
 
+  for p in ${POST_DATA//&/ };
+  do
+    [[ "$p" =~ ^fn ]] && name=${p:3};
+    [[ "$p" =~ ^un ]] && user=${p:3};
+    [[ "$p" =~ ^pw ]] && pass=${p:3};
+  done
+
   case ${REQUEST_URI#${CONTEXT_PREFIX%/}} in
     (/) echo -e "Status: 302\nLocation: home\n\n"; exit ;;
     (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
     (/user/) body_content=$(view_profile);;
+
     (/upload)
     site_title+=" | Upload"
     body_content=$upload_form
     ;;
 
+    (/create)
+    if [ -n "$POST_DATA" ]
+    then
+      if [[ "$user" && "$pass" && "$name" ]]
+      then
+        conflict=$(mysql_call "SELECT * FROM users WHERE username='$user'")
+        if [[ -z "$conflict" ]]
+        then
+          mysql_call "INSERT INTO users ( username, passhash, firstname ) VALUES ( '$user' , MD5('$pass'), '$name')"
+          user_id=$(mysql_call "SELECT user_id FROM users WHERE username='$user' AND passhash=MD5('$pass')")
+          do_login
+        else
+          message+="<h2>sorry. That username is taken</h2>"
+        fi
+      else
+        message+="<h2>please complete the form<h2>"
+      fi
+    fi
+    site_title+=" | Create Account"
+    body_content+="<h1>Create An Account</h1>$create_account_form"
+    ;;
+
     (/login)
     if [ -n "$POST_DATA" ]
     then
-      for p in ${POST_DATA//&/ };
-      do
-        [[ "$p" =~ ^un ]] && user=${p:3};
-        [[ "$p" =~ ^pw ]] && pass=${p:3};
-      done
       if [[ "$user" && "$pass" ]]
       then
-        user_id=$(mysql_call "SELECT user_id FROM uses WHERE username='$user' AND passhash=MD5('$pass')")
+        user_id=$(mysql_call "SELECT user_id FROM users WHERE username='$user' AND passhash=MD5('$pass')")
         if [[ "$user_id" ]]
         then
-          [ -z "$rdr" ] || rdr="home"
+          name=$(mysql_call "SELECT firstname FROM users WHERE username='$user' AND passhash=MD5('$pass')")
+          do_login
         else
           message="<h2>sorry, that's not what I have on file</h2>"
         fi

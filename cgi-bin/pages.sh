@@ -12,10 +12,21 @@ dummy_form="<h1>Dummy Form</h1>
 <input type='submit' value='post' />
 </form>"
 
-login_form="<table><form method='post'>
+login_form="<form method='post'><table>
 <tr><td>Username:</td><td><input type='text' width='30' name='un'/></td></tr>
 <tr><td>Password:</td><td><input type='password' width='30' name='pw'/></td></tr>
-<tr><td><input type='submit' value='Log In' /></td><td><a href='create'>Create an Account</a></td></tr>
-</form></table>"
+<tr><td><input type='submit' value='Log In' /></td><td><a href='create'>Or reate an Account</a></td></tr>
+</table></form>"
+
+create_account_form="<form method='post'><table>
+<tr><td>First Name:</td><td>input type='text' width='30' name='fn'/></td></tr>
+<tr><td>Userame:</td><td>input type='text' width='30' name='un'/></td></tr>
+<tr><td>Password:</td><td>input type='password' width='30' name='pw'/></td></tr>
+<tr><td><input type='submit' value='Create Account' /></td><td><a href='login'>Already have an account? Log in</a></td></tr>
+</table></form>"
+
+
+
+</table></form>"
 
 upload_form="<h1>Upload Test</h1><p>placeholder</p>"
