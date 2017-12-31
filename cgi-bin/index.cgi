@@ -7,16 +7,15 @@ html_headers() { echo "<head><title>$site_title</title></head>";}
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
-  :
+  echo "Set-Cookie: randint=$((RANDOM % 1000))"
+  echo "Content-Type: text/html"
+  echo
+  env | sort
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
-  :
+  echo "Content-Type: application/json"
+  echo
+  echo '{"status":1}'
 else
   crit_err "unknown accept type"
 fi
-
-echo "Set-Cookie: randint=$((RANDOM % 1000))"
-echo "Content-Type: text/html"
-echo
-env | sort
-echo "post data: $POST_DATA"
