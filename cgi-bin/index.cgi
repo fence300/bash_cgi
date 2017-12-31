@@ -13,7 +13,7 @@ html_headers() {
   echo "h1 { text-align:center;}"
   echo "body { font-family:serif;}"
   echo ".con { margin-left:20%;}"
-  echo ".nav {position:fixed;top:0px;left:0px;width:20%;text-align:center;}"
+  echo ".nav { position:fixed; height:100%;top:0px;left:0px;width:20%;text-align:center;background-color:grey;}"
   echo ".nav p {color:white;background-color:black;padding:5px;font-weight:bold;width=100%}"
   echo ".nav p:hover { background-color:white; color:black}"
   echo "</style>"
