@@ -4,7 +4,7 @@
 crit_err() { echo -e "Status: 500\nContent-type: text/html\n\n$*"; exit;}
 test -e config.sh && source config.sh || crit_err "could not find config"
 for i in dir ses_dir; do [ -d "${!i}" ] || mkdir -p ${!i}; [ -d "${!i}" ] || crit_err "could not find $i"; done
-
+rand_string() { head -c 1000 /dev/urandom | LANG=C sed 's|[^0-9a-zA-Z]||g' | tr -d '\n' | head -c30;}
 html_headers() {
   echo "<head>"
   echo "<title>$site_title</title>"
@@ -26,10 +26,17 @@ html_body() {
   echo "</body>"
 }
 
+present_time=$(date +%s)
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
-  for c in ${HTTP_COOKIE//;/ }; do [ "${c:0:2}" = "s=" ] && sess="${c:2}"; done
+  expire_now="$( TZ=GMT date +"%a, %d %b %Y %T %Z" )"
+  expire_soon="$( TZ=GMT date -d@$((present_time + 900)) +"%a, %d %b %Y %T %Z" )"
+  expire_later="$( TZ=GMT date -d@$((present_time + 3600)) +"%a, %d %b %Y %T %Z" )"
 
+  for c in ${HTTP_COOKIE//;/ }; do [ "${c:0:5}" = "sess=" ] && sess="${c:5}"; done
+  [ -z "$sess" ]||[ ! -e "$ses_dir/$sess" ]&&{ sess=$(rand_string); echo "AUTHED=0" >> "$ses_dir/$sess";}
+  echo "Set-Cookie: sess=$sess; expires=$expire_soon";
+  source "$ses_dir/$sess"
 
 
   body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
