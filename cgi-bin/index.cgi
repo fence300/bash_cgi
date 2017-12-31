@@ -34,7 +34,7 @@ then
   expire_later="$( TZ=GMT date -d@$((present_time + 3600)) +"%a, %d %b %Y %T %Z" )"
 
   for c in ${HTTP_COOKIE//;/ }; do [ "${c:0:5}" = "sess=" ] && sess="${c:5}"; done
-  [ -z "$sess" ] || [ ! -e "$ses_dir/$sess" ] && { sess=$(rand_string); echo "AUTHED=0" >> "$ses_dir/$sess";}
+  [ -z "$sess" ] || ! [ -e "$ses_dir/$sess" ] && { sess=$(rand_string); echo "AUTHED=0" >> "$ses_dir/$sess";}
   echo "Set-Cookie: sess=$sess; expires=$expire_soon";
   source "$ses_dir/$sess"
 
