@@ -66,11 +66,11 @@ then
           exit
         else
           debug_msg+=("Detected Conflict")
-          message+="<h2>sorry. That username is taken</h2>"
+          message+="<h2>Sorry. That username is taken.</h2>"
         fi
       else
         debug_msg+=("Incomplete Form")
-        message+="<h2>please complete the form<h2>"
+        message+="<h2>Please complete the form.<h2>"
       fi
       debug_msg+=("No Post Data sent")
     fi
@@ -93,10 +93,10 @@ then
           echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
           exit
         else
-          message="<h2>sorry, that's not what I have on file</h2>"
+          message="<h2>Sorry. That's not what I have on file.</h2>"
         fi
       else
-        message="<h2>username and password are required</h2>"
+        message="<h2>Username and Password are required.</h2>"
       fi
     fi
 
