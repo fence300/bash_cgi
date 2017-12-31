@@ -38,7 +38,7 @@ then
   echo "Set-Cookie: sess=$sess; expires=$expire_soon";
   source "$ses_dir/$sess"
 
-  case ${REQUEST_URI#/cgi-bin} in
+  case ${REQUEST_URI#${CONTEXT_PREFIX%/}} in
     (/) echo -e "Status: 301\nLocation: home\n\n"; exit ;;
     (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
     (*)
