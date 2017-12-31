@@ -107,7 +107,10 @@ then
     fi
     site_title+=" | Login"
     body_content+="<h1>Login</h1>$message$login_form"
+    ;;
 
+    (/logout)
+    sed -i 's|AUTHED=1|AUTHED=0|;s|^(declare)|#\1|' "$ses_dir/$sess"
     ;;
 
     (/env)
