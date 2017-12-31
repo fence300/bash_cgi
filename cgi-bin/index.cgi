@@ -35,7 +35,7 @@ then
 
   declare -a debug_msg
   case ${REQUEST_URI#${CONTEXT_PREFIX%/}} in
-    (/) echo -e "Status: 302\nLocation: home\n\n"; exit ;;
+    (/) echo -e "Location: home\n\n"; exit ;;
     (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
     (/user/) body_content=$(view_profile);;
 
