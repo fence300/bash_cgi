@@ -18,10 +18,12 @@ table { width:30%; margin-left:30%;}
   width=100%
   padding:10px;
   font-weight:bold;
+  font-size: inherit;
   color:white;
   background-color:black;
 }
 .nav p:hover {
+  font-size: inherit;
   background-color:white;
   color:black
 }
