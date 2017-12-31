@@ -127,11 +127,9 @@ then
   html_headers
 
   debug=1
-  echo "<body>"
-  echo "<div class='con'>$body_content"
+  echo "<body><div class='con'>$body_content"
   (debug) && echo "<table>$(for i in ${!debug_msg[*]}; do echo "<tr><td>${debug_msg[$i]}</td></tr>"; done)</table>"
-  echo "</div>"
-  echo "<div class='nav'>"
+  echo "</div><div class='nav'>"
   if ((AUTHED))
   then
     echo "<p><a href='home'>Hello $user</a></p>"
@@ -140,11 +138,8 @@ then
     echo "<p><a href='home'>Home</a></p>"
     echo "<p><a href='login'>Log In</a></p>"
   fi
-  echo "$(for i in {1..3}; do echo "<p><a>Dummy Item $i</a></p>"; done)"
-  echo "</div>"
-  echo "</body>"
-  echo "</html>"
-
+  echo "</div></body></html>"
+  exit
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
   echo "Content-Type: application/json"
