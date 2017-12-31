@@ -25,7 +25,7 @@ html_body() {
   then
     echo ""
   else
-
+    :
   fi
   echo "$(for i in {1..3}; do echo "<p><a>Dummy Item $i</a></p>"; done)"
   echo "</div>"
@@ -36,5 +36,4 @@ view_profile()
 {
   profile_id="${REQUEST_URI#${CONTEXT_PREFIX}user/}"
   [[ -z "$profile_id" ]] && profile_id=user_id
-  
 }
