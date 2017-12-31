@@ -30,25 +30,32 @@ then
     ;;
 
     (/login)
-    for p in ${POST_DATA//&/ };
-    do
-      [[ "$p" =~ ^un ]] && user=${p:3};
-      [[ "$p" =~ ^pw ]] && pass=${p:3};
-    done
-    if [[ "$user" && "$pass" ]]
+    if [ -n "$POST_DATA" ]
     then
-      user_id=$(mysql_call "SELECT user_id FROM uses WHERE username='$user' AND passhash=MD5('$pass')")
-      if [[ "$user_id" ]]
+      for p in ${POST_DATA//&/ };
+      do
+        [[ "$p" =~ ^un ]] && user=${p:3};
+        [[ "$p" =~ ^pw ]] && pass=${p:3};
+      done
+      if [[ "$user" && "$pass" ]]
       then
-        [ -z "$rdr" ] || rdr="home"
-
+        user_id=$(mysql_call "SELECT user_id FROM uses WHERE username='$user' AND passhash=MD5('$pass')")
+        if [[ "$user_id" ]]
+        then
+          [ -z "$rdr" ] || rdr="home"
+        else
+          message="<h2>sorry, that's not what I have on file</h2>"
+        fi
       else
-        message="<h2>sorry, that's not what I have on file</h2>"
+        message="<h2>username and password are required</h2>"
       fi
-    else
-      message="<h2>username and password are required</h2>"
     fi
 
+    if [ -n "$rdr" ]
+    then
+      echo "Set-Cookie: rdr=$rdr; expires=$expire_soon"
+      message+="<h2>you will be redirected to ${rdr} after login</h2>"
+    fi
     site_title+=" | Login"
     body_content+="<h1>Login</h1>$message$login_form"
 
