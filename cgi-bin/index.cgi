@@ -9,21 +9,10 @@ html_headers() {
   echo "<style>"
   echo "p {margin:0px;border:0px;}"
   echo "h1 { text-align:center;}"
+  echo "body { font-family:sans-serif;}"
   echo ".con { margin-left:20%;}"
-  echo ".nav {
-    position:fixed;
-    top:0px;
-    left:0px;
-    width:20%;
-    text-align:center;
-  }"
-  echo ".nav p {
-    color:white;
-    background-color:black;
-    padding:5px;
-    font-weight:bold;
-    width=100%
-  }"
+  echo ".nav {position:fixed;top:0px;left:0px;width:20%;text-align:center;}"
+  echo ".nav p {color:white;background-color:black;padding:5px;font-weight:bold;width=100%}"
   echo ".nav p:hover { background-color:white; color:black}"
   echo "</style>"
   echo "</head>"
