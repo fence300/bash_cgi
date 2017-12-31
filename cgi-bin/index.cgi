@@ -2,15 +2,15 @@
 
 [ "$REQUEST_METHOD" = "POST" ] && { read POST_DATA;}
 crit_err() { echo -e "Status: 500\nContent-type: text/html\n\n$*"; exit;}
-[ -e 'config.sh' ] && source config.sh || crit_err "couldn't find config"
+test -e config.sh && source config.sh || crit_err "could not find config"
 html_headers() { echo "<head><title>$site_title</title></head>";}
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
-
+  :
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
-
+  :
 else
   crit_err "unknown accept type"
 fi
