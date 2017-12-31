@@ -10,7 +10,8 @@ then
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
-  env | sort
+  echo "<h1>Environment</h1>"
+  env | sort | while read line; do echo "<p>$line</p>"
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
   echo "Content-Type: application/json"
