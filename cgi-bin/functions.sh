@@ -18,8 +18,8 @@ html_body() {
   echo "<div class='nav'>"
   if ((AUTHED))
   then
-    echo "<p><a href='home'>$user</a></p>"
-    echo "<p><a href='logout'>logout</a></p>"
+    echo "<p><a href='home'>$user </a></p>"
+    echo "<p><a href='logout'>Log out</a></p>"
   else
     echo "<p><a href='home'>Home</a></p>"
     echo "<p><a href='login'>Log In</a></p>"
