@@ -22,9 +22,7 @@ html_body()
 {
   echo "<body>"
   echo "<div class='con'>$body_content</div>"
-  echo "<div class='nav'>"
-  for i in {1..3}; do echo "<p><a>Item $i</a></p>"; done
-  echo "</div>"
+  echo "<div class='nav'>$(for i in {1..3}; do echo "<p><a>Item $i</a></p>"; done)</div>"
   echo "</body>"
 }
 
@@ -32,6 +30,14 @@ if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
   body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
   body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
+  body_content+="<h1>Dummy Form</h1>
+  <form method='post'>
+  <input type='hidden' name='key1' value='val1'/>
+  <input type='hidden' name='key2' value='val2'/>
+  <input type='hidden' name='key3' value='val3'/>
+  <input type='submit' value='post'/>
+  </form>"
+  test -n "$POST_DATA" && echo "<h1>Post Data</h1><p>$POST_DATA</p>"
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
