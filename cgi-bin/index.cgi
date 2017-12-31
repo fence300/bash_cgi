@@ -75,7 +75,7 @@ then
       debug_msg+=("No Post Data sent")
     fi
     site_title+=" | Create Account"
-    body_content+="<h1>Create An Account</h1>$create_account_form"
+    body_content+="<h1>Create An Account</h1>$message$create_account_form"
     ;;
 
     (/login)
