@@ -41,7 +41,7 @@ then
   case ${REQUEST_URI#/cgi-bin/} in
     () echo -e "Status: 301\nLocation: home\n\n"; exit ;;
     (/home) body_content+="<h1>Home</h1>"; site_title+=" | Home" ;;
-    (/env)
+    (*)
     site_title+=" | Environment"
     body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
     body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
