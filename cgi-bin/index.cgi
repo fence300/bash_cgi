@@ -111,8 +111,9 @@ then
 
     (/logout)
     sed -i 's|AUTHED=1|AUTHED=0|;/^declare/d' "$ses_dir/$sess"
-    echo -e "Location: env\n\n"
-    exit
+    AUTHED=0
+    site_title+=" | Logged Out"
+    body_content="<h1>Logged Out</h1><h2>Come back soon!</h2>"
     ;;
 
     (/env)
