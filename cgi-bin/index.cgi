@@ -9,6 +9,7 @@ html_headers() {
   echo "<style>"
   echo "p {margin:0px;border:0px;}"
   echo "h1 { text-align:center;}"
+  echo ".con { margin-left:20%;}"
   echo "</style>"
   echo "</head>"
 }
