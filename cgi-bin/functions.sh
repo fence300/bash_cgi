@@ -18,7 +18,7 @@ html_body() {
   echo "<div class='nav'>"
   if ((AUTHED))
   then
-    echo ""
+    echo "<p><a href='home'>$user</a></p>"
   else
     :
   fi
