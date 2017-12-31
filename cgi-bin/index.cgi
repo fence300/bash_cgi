@@ -35,9 +35,10 @@ then
   <input type='hidden' name='key1' value='val1'/>
   <input type='hidden' name='key2' value='val2'/>
   <input type='hidden' name='key3' value='val3'/>
-  <input type='submit' value='post'/>
+  <input type='submit' value='post' />
   </form>"
-  test -n "$POST_DATA" && echo "<h1>Post Data</h1><p>$POST_DATA</p>"
+  test -n "$POST_DATA" && body_content+="<h1>Post Data</h1><p>$POST_DATA</p>"
+  
   echo "Set-Cookie: randint=$((RANDOM % 1000))"
   echo "Content-Type: text/html"
   echo
