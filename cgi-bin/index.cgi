@@ -32,9 +32,7 @@ html_headers() {
 html_body()
 {
   echo "<body>"
-  echo "<div class='con'>"
-  echo "$body_content"
-  echo "</div>"
+  echo "<div class='con'>$body_content</div>"
   echo "<div class='nav'>"
   for i in {1..3}; do echo "<p><a>Item $i</a></p>"; done
   echo "</div>"
