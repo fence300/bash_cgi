@@ -5,7 +5,7 @@ site_title="Mirkre Sandbox"
 
 echo "Content-Type: text/html"
 echo
-echo "<html>"
+echo "<!DOCTYPE html><html>"
 echo "<head>"
 echo "<title>$site_title</title>"
 echo "<link rel='stylesheet' type='text/css' href='/style.css' />"
