@@ -3,6 +3,8 @@
 [ "$REQUEST_METHOD" = "POST" ] && { read POST_DATA;}
 crit_err() { echo -e "Status: 500\nContent-type: text/html\n\n$*"; exit;}
 test -e config.sh && source config.sh || crit_err "could not find config"
+for i in dir ses_dir; do [ -d "${!i}" ] || mkdir -p ${i}; [ -d "${!i}" ] || crit_err "could not find $i"; done
+
 html_headers() {
   echo "<head>"
   echo "<title>$site_title</title>"
@@ -17,9 +19,7 @@ html_headers() {
   echo "</style>"
   echo "</head>"
 }
-
-html_body()
-{
+html_body() {
   echo "<body>"
   echo "<div class='con'>$body_content</div>"
   echo "<div class='nav'>$(for i in {1..3}; do echo "<p><a>Item $i</a></p>"; done)</div>"
@@ -28,6 +28,10 @@ html_body()
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
 then
+  for c in ${HTTP_COOKIE//;/ }; do [ "${c:0:2}" = "s=" ] && sess="${c:2}"; done
+
+
+
   body_content+="<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
   body_content+="<h1>Cookies</h1>$(for c in ${HTTP_COOKIE//;/ }; do echo "<p>$c</p>"; done)"
   body_content+="<h1>Dummy Form</h1>
