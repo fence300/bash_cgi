@@ -1,7 +1,7 @@
 p { margin: 0px; border: 0px;}
+h1 { text-align: center;}
 body { font-family: sans-serif; font-weight: normal;}
 .con { margin-left: 10%;}
-.con h1 { text-align: center;} 
 .nav { position: fixed; top:0px; left:0px;}
 .nav p { color: black; background-color: white; }
 .nav p:hover { color: white; background-color: black;}
