@@ -6,7 +6,7 @@ crit_err() { echo -e "Status: 500\nContent-type: text/html\n\n$*"; exit;}
 [ -e config.sh ] && source config.sh || crit_err "could not find config"
 for i in dir ses_dir; do [ -d "${!i}" ] || mkdir -p ${!i}; [ -d "${!i}" ] || crit_err "could not find $i"; done
 [ -e "$dir"/functions.sh ] && source "$dir"/functions.sh || crit_err "could not load functions file"
-[ -e "$dir/pages.sh" ] && source "$dir/pages.sh" || crit_err "could not load pages file"
+[ -e "$dir"/pages.sh ] && source "$dir"/pages.sh || crit_err "could not load pages file"
 
 mysql_call "CREATE TABLE IF NOT EXISTS users (
   user_id INT(10) NOT NULL AUTO_INCREMENT,
