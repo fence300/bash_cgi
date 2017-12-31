@@ -19,10 +19,10 @@ login_form="<form method='post'><table>
 </table></form>"
 
 create_account_form="<form method='post'><table>
-<tr><td>First Name:</td><td>input type='text' width='30' name='fn'/></td></tr>
-<tr><td>Userame:</td><td>input type='text' width='30' name='un'/></td></tr>
-<tr><td>Password:</td><td>input type='password' width='30' name='pw'/></td></tr>
-<tr><td><input type='submit' value='Create Account' /></td><td><a href='login'>Already have an account? Log in</a></td></tr>
+<tr><td>First Name:</td><td><input type='text' width='30' name='fn'/></td></tr>
+<tr><td>Userame:</td><td><input type='text' width='30' name='un'/></td></tr>
+<tr><td>Password:</td><td><input type='password' width='30' name='pw'/></td></tr>
+<tr><td><input type='submit' value='Create Account' /></td><td><p>Already have an account?<p><p><a href='login'>Log in</a></p></td></tr>
 </table></form>"
 
 
