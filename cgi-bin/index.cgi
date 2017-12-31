@@ -30,7 +30,6 @@ then
     ;;
 
     (/login)
-    for c in
     for p in ${POST_DATA//&/ };
     do
       [[ "$p" =~ ^un ]] && user=${p:3};
