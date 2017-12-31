@@ -23,7 +23,6 @@ html_body() {
   else
     echo "<p><a href='home'>Home</a></p>"
     echo "<p><a href='login'>Log In</a></p>"
-
   fi
   echo "$(for i in {1..3}; do echo "<p><a>Dummy Item $i</a></p>"; done)"
   echo "</div>"
