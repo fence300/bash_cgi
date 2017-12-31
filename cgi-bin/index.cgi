@@ -11,7 +11,7 @@ then
   echo "Content-Type: text/html"
   echo
   echo "<h1>Environment</h1>"
-  env | sort | while read line; do echo "<p>$line</p>"
+  env | sort | while read line; do echo "<p>$line</p>"; done
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
   echo "Content-Type: application/json"
