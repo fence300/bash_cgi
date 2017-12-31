@@ -27,11 +27,6 @@ html_body() {
   echo "</body>"
 }
 
-do_login()
-{
-  sed -i 's|AUTHED=0|AUTHED=1|' "$ses_dir/$sess"
-  declare user name user_id >> "$ses_dir/$sess"
-}
 
 view_profile()
 {
