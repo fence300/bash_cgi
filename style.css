@@ -24,3 +24,4 @@ table { width:30%; margin-left:30%;}
   background-color:white;
   color:black
 }
+.nav p a { color: inherit; background-color: inherit;}
