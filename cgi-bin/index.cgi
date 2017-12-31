@@ -5,10 +5,10 @@ site_title="Mirkre Sandbox"
 
 echo "Content-Type: text/html"
 echo
-echo "<!DOCTYPE html><html>"
+echo "<html>"
 echo "<head>"
 echo "<title>$site_title</title>"
-echo "<link rel='stylesheet' type='text/css' href='/style.css' />"
+echo "<link rel='stylesheet' type='text/css' href='/style.css' >"
 echo "</head>"
 echo "<body>"
 echo "<h1>Environment</h1>"
