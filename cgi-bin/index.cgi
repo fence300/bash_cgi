@@ -11,7 +11,13 @@ html_headers() {
   echo "h1 { text-align:center;}"
   echo ".con { margin-left:20%;}"
   echo ".nav { position:fixed; top:0px; left:0px;}"
-  echo ".nav p { color:white; background-color:black; padding:5px;}"
+  echo ".nav p {
+    color:white;
+    background-color:black;
+    padding:5px;
+    font-weight:bold;
+    width=100%
+  }"
   echo ".nav p:hover { background-color:white; color:black}"
   echo "</style>"
   echo "</head>"
@@ -38,7 +44,7 @@ then
   echo
   html_headers
   html_body
-  
+
 
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
