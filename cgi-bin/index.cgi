@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ "$REQUEST_METHOD" = "POST" ] && { read POST_DATA}
+[ "$REQUEST_METHOD" = "POST" ] && { read POST_DATA;}
 
 echo "Content-Type: text/html"
 echo
