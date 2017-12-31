@@ -60,7 +60,8 @@ then
           user_id=$(mysql_call "SELECT user_id FROM users WHERE username='$user' AND passhash=MD5('$pass')")
           sed -i 's|AUTHED=0|AUTHED=1|' "$ses_dir/$sess"
           declare user name user_id >> "$ses_dir/$sess"
-          [[ "$rdr" ]] || echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
+          [[ "$rdr" ]] || rdr=home
+          echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
           exit
         else
           debug_msg+=("Detected Conflict")
@@ -87,7 +88,8 @@ then
           name=$(mysql_call "SELECT firstname FROM users WHERE username='$user' AND passhash=MD5('$pass')")
           sed -i 's|AUTHED=0|AUTHED=1|' "$ses_dir/$sess"
           declare user name user_id >> "$ses_dir/$sess"
-          [[ "$rdr" ]] || echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
+          [[ "$rdr" ]] || rdr=home
+          echo -e "Set-Cookie: rdr=NULL; expires=$expire_now\nLocation: $rdr\n\n"
           exit
         else
           message="<h2>sorry, that's not what I have on file</h2>"
