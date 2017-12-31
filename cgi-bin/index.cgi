@@ -10,7 +10,7 @@ html_headers() {
   echo "p {margin:0px;border:0px;}"
   echo "h1 { text-align:center;}"
   echo ".con { margin-left:20%;}"
-  echo ".nav { position:fixed; top:0px; left:0px; width:20}"
+  echo ".nav { position:fixed; top:0px; left:0px; width:20%}"
   echo ".nav p {
     color:white;
     background-color:black;
