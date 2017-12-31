@@ -10,8 +10,23 @@ html_headers() {
   echo "p {margin:0px;border:0px;}"
   echo "h1 { text-align:center;}"
   echo ".con { margin-left:20%;}"
+  echo ".nav { position:fixed; top:0px; left:0px;}"
+  echo ".nav p { color:white; background-color:black; padding:5px;}"
+  echo ".nav p:hover { background-color:white; color:black}"
   echo "</style>"
   echo "</head>"
+}
+
+html_body()
+{
+  echo "<body>"
+  echo "<div class='con'>"
+  echo "$body_content"
+  echo "</div>"
+  echo "<div class='nav'>"
+  for i in {1..3}; do echo "<p><a>Item $i</a></p>"; done
+  echo "</div>"
+  echo "</body>"
 }
 
 if [[ "$HTTP_ACCEPT" =~ ^"text/html" ]]
@@ -20,8 +35,9 @@ then
   echo "Content-Type: text/html"
   echo
   html_headers
-  echo "<h1>Environment</h1>"
-  env | sort | while read line; do echo "<p>$line</p>"; done
+  echo "<body>"
+  echo "<h1>Environment</h1>$(env | sort | while read line; do echo "<p>$line</p>"; done)"
+  echo "<body>"
 elif [[ "$HTTP_ACCEPT" =~ ^"application/json" ]]
 then
   echo "Content-Type: application/json"
